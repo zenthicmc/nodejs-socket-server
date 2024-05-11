@@ -4,7 +4,6 @@ import { Server } from "socket.io";
 const httpServer = createServer();
 const io = new Server(httpServer, {
   allowEIO3: true,
-	path: "/transmit/",
   cors: {
     origin: "*",
 		methods: ["GET", "POST"],
