@@ -1,13 +1,12 @@
 import { createServer } from "http";
-import Server from "socket.io";
+import { Server } from "socket.io";
 
 const httpServer = createServer();
 const io = new Server(httpServer, {
-  allowEIO3: true,
+  allowEIO4: true,
   cors: {
     origin: "*",
     methods: ["GET", "POST"],
-    transports: ["websocket", "polling"],
   },
 });
 
