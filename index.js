@@ -6,7 +6,8 @@ const io = new Server(httpServer, {
   allowEIO3: true,
   cors: {
     origin: "*",
-		methods: ["GET", "POST"],
+    methods: ["GET", "POST"],
+    transports: ["websocket", "polling"],
   },
 });
 
