@@ -11,7 +11,7 @@ const io = new Server(httpServer, {
   },
 });
 
-io.on("connection", (socket) => {
+io.on("connect", (socket) => {
 	console.log("a user connected");
 	
 	socket.on("data", (msg) => {
