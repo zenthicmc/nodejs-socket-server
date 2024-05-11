@@ -11,7 +11,7 @@ const io = new Server(httpServer, {
 io.on("connection", (socket) => {
 	console.log("a user connected");
 	
-	socket.on("chat message", (msg) => {
+	socket.on("data", (msg) => {
 		console.log("message: " + msg);
 	});
 
