@@ -1,27 +1,11 @@
-import { createServer } from "http";
-import { Server } from "socket.io";
+const app = require("express")();
+const appWs = require("express-ws")(app);
 
-const httpServer = createServer();
-const io = new Server(httpServer, {
-  allowEIO4: true,
-  cors: {
-    origin: "*",
-    methods: ["GET", "POST"],
-  },
-});
-
-io.on("connect", (socket) => {
-  console.log("a user connected");
-
-  socket.on("data", (msg) => {
-    console.log("message: " + msg);
-  });
-
-  socket.on("disconnect", () => {
-    console.log("user disconnected");
+app.ws("/data", (ws) => {
+  ws.on("message", (msg) => {
+    console.log("Received: ", msg);
+    ws.send(msg);
   });
 });
 
-httpServer.listen(3005, () => {
-  console.log("listening on *:3005");
-});
+app.listen(3005, () => console.log("Server has been started *:3005"));
